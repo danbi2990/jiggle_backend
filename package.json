@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "test": "mocha --recursive --exit",
-    "save-template": "node ./mongoose-scripts/save.script.js"
+    "save-template": "node ./mongoose-scripts/save.script.js",
+    "remove-template": "node ./mongoose-scripts/remove.script.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
