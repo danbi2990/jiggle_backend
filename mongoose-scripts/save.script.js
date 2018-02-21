@@ -12,7 +12,25 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(config.mongo_uri, config.mongo_options);
 
-const temp = new Template({
+const templates = [
+  new Template({
+    id: 1,
+    name: "Single Bar",
+    gif: "/gif/single-bar-chart.gif",
+    shouldFocusMarked: true,
+    rawData: [],
+    unit: ""
+  }),
+  new Template({
+    id: 2,
+    name: "Line",
+    gif: "./gif/line-chart.gif",
+    rawData: [],
+    unit: ""
+  })
+];
+
+const bar = new Template({
   id: 1,
   name: "Single Bar",
   gif: "/gif/single-bar-chart.gif",
@@ -21,9 +39,21 @@ const temp = new Template({
   unit: ""
 });
 
-temp.save(function(err, t, cnt) {
+const line = new Template({
+  id: 2,
+  name: "Line",
+  gif: "./gif/line-chart.gif",
+  rawData: [],
+  unit: ""
+});
+
+Template.insertMany(templates, function(err, docs) {
   if (err) throw new Error("Save Failed.");
-  console.log(`${config.padding}${t.name}(id: ${t.id}) saved.`);
+  if (docs) {
+    docs.forEach((d, i) => {
+      console.log(`${config.padding}${d.name}(id: ${d.id}) saved.`);
+    });
+  }
   // db.connection.disconnect();
   mongoose.connection.close(function() {
     console.log(`${config.padding}DB Connection Closed. (from Script)`);
