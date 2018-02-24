@@ -15,37 +15,47 @@ mongoose.connect(config.mongo_uri, config.mongo_options);
 const templates = [
   new Template({
     id: 1,
-    name: "Single Bar",
+    name: "Single Focus Bar",
     gif: "/gif/single-bar-chart.gif",
-    shouldFocusMarked: true,
-    rawData: [],
-    unit: ""
+    dataExample: []
   }),
   new Template({
     id: 2,
-    name: "Line",
-    gif: "./gif/line-chart.gif",
-    rawData: [],
-    unit: ""
+    name: "Single Not Focus Bar",
+    gif: "",
+    dataExample: []
+  }),
+  new Template({
+    id: 3,
+    name: "Horizontal Single Focus Bar",
+    gif: "",
+    dataExample: []
+  }),
+  new Template({
+    id: 4,
+    name: "Horizontal Single Not Focus Bar",
+    gif: "",
+    dataExample: []
+  }),
+  new Template({
+    id: 5,
+    name: "Grouped Bar",
+    gif: "",
+    dataExample: []
+  }),
+  new Template({
+    id: 6,
+    name: "Small Data Line",
+    gif: "",
+    dataExample: []
+  }),
+  new Template({
+    id: 7,
+    name: "Large Data Line",
+    gif: "",
+    dataExample: []
   })
 ];
-
-const bar = new Template({
-  id: 1,
-  name: "Single Bar",
-  gif: "/gif/single-bar-chart.gif",
-  shouldFocusMarked: true,
-  rawData: [],
-  unit: ""
-});
-
-const line = new Template({
-  id: 2,
-  name: "Line",
-  gif: "./gif/line-chart.gif",
-  rawData: [],
-  unit: ""
-});
 
 Template.insertMany(templates, function(err, docs) {
   if (err) throw new Error("Save Failed.");
